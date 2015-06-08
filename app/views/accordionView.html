@@ -1,0 +1,27 @@
+<div>
+    <div>
+ <p><a class="btn btn-success btn-lg" ng_click="mobiView(false)">Call Wizard &raquo;</a></p>
+</div>
+<accordion close-others="true">
+    <accordion-group >
+             <accordion-heading>
+        <i class="fa" ng-class="{'fa-question-circle': !screenModel.adminStatus,'fa-check-circle': screenModel.adminStatus}">   </i> 
+                 Who needs this request - {{ screenModel.division +'-'+ screenModel.altpartner }}  
+        </accordion-heading>
+        <div ng-include="'app/views/adminView.html'"></div>         
+    </accordion-group>
+    <accordion-group  >
+        <accordion-heading>
+        <i class="fa" ng-class="{'fa-question-circle': !screenModel.locationStatus,'fa-check-circle': screenModel.locationStatus}">   </i>
+            Where is it? - {{ screenModel.sitename }} 
+        </accordion-heading>
+      <div ng-include="'app/views/locationView.html'"></div>  
+    </accordion-group>
+    <accordion-group >
+     <accordion-heading>
+        <i class="fa" ng-class="{'fa-question-circle':!{{screenModel.serviceStatus}},'fa-check-circle':{{screenModel.serviceStatus}}}">   </i> What is It?
+        </accordion-heading>
+     <div ng-include="'app/views/autocomplete.html'"></div>  
+    </accordion-group>
+  </accordion>
+</div> 

@@ -1,0 +1,32 @@
+<div class="container">
+<div class="jumbotron">
+        <h2>Self Help in Call Logging</h2>
+        <p >Placing a Call is easy - just follow the steps below.</p>
+      <p><a class="btn btn-success btn-lg" ng-click="mobiView(true)">Mobile View &raquo;</a></p>
+    </div> 
+   <tabset justified="true">
+    <tab > <tab-heading>  <h3>Who needs us?</h3> </tab-heading>
+    <div class="col-md-6">
+               
+                <p>This tells us who we need to assist.</p>
+                  <div ng-include="'app/views/adminView.html'"></div>      
+    </div>
+       </tab>   <tab > <tab-heading>  <h2>Where is it? </h2> </tab-heading>
+    <div class="col-md-6">
+       
+        <p> Provide us with the Location</p>
+
+         <div ng-include="'app/views/locationView.html'"></div> 
+    </div>
+     </tab>       <tab> <tab-heading> <h2>What is it? </h2></tab-heading>
+    <div class="col-md-6">
+               
+               <p> Give us some details of the need</p>
+              
+               <div ng-include="'app/views/autocomplete.html'"></div>
+   </div>
+</tab>
+    </tabset>
+    <br />
+<p><a class="btn btn-success btn-lg" href="#/">Back &laquo;</a></p>
+    </div> 

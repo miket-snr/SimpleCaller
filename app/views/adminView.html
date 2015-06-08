@@ -1,0 +1,18 @@
+<div class="container">
+        <div>
+             <h4> What Division?</h4> <br/>
+        <select data-ng-model="screenModel.division"
+                data-ng-options="divis for divis in refdivdata">                
+        </select>
+            </div>
+             <br/> 
+  <div>
+  <h4>Who is the Contact Person? </h4>
+ <input type="text" ng-model="screenModel.altpartner" placeholder="Select a Partner" />
+  </div> 
+    <br/> 
+    <div ng-show="mobi">
+    <p ><a class="btn btn-success btn-lg" href="#/call">Back &laquo;</a>
+ <a class="btn btn-success btn-lg" href="#/where">Next Step &raquo;</a></p>
+        </div>
+  </div>

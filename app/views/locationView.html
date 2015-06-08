@@ -1,0 +1,47 @@
+ <div class="container">
+  <div>
+  <h4>Choose a Site:</h4>
+ <input type="text" ng-model="screenModel.site" placeholder="Search by Site e.g. *19 or *21*" />
+ {{ screenModel.sitename }}
+       <a ng-click="open()" class="btn btn-warning ">Search...</a>
+  </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Identify the Site!</h3>
+        <input type="text" ng-model="siteCode2" placeholder="Search by Site e.g. *19 or *21*" />
+        <input type="text" ng-model="siteName2" placeholder="Search by Name e.g. *ampus* " />
+        <a ng-click="doSearch(siteCode2,siteName2)" class="btn btn-warning ">Search...</a>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item.sitecode + ' - ' + item.sitename }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+      
+  <div>
+  <h4>Choose a Building:</h4>
+ <input type="text" ng-model="screenModel.building" placeholder="Building Selection" />
+  </div>
+      <div>
+  <h4>Choose a Floor:</h4>
+  <select data-ng-model="screenModel.floor"
+                data-ng-options="floor for floor in floorList">                
+  </select>
+  </div>
+      <div>
+  <h4>Room Code:</h4>
+ <input type="text" ng-model="screenModel.room" placeholder="Room Selection" />
+  </div>
+      <br/>
+     <div ng-show="mobi">
+         <p><a class="btn btn-success btn-lg" href="#/who">Back &laquo;</a>
+            <a class="btn btn-success btn-lg" href="#/what">Next Step &raquo;</a></p>
+    </div>
+</div>

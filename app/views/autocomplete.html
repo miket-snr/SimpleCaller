@@ -1,0 +1,33 @@
+         <div class="container">
+              <input type="text" ng-model="searchBox" placeholder="start typing" />
+          {{screenModel.servicecode + ' -' + screenModel.department}} 
+               <button type="button" class="btn btn-xs btn-info" ng-click="screenModel.servicecode = ''; screenModel.department = '' ; searchBox = '' ;"> Clear Selection</button> 
+          <br/> 
+        <div class="pre-scrollable" ng-show="screenModel.servicecode=='' ">
+           <a  class="list-group-item" ng-repeat="node in nodeData | filter:searchBox">
+               <p class="list-group-item-text"><button type="button" class="btn btn-xs btn-info" ng-click="screenModel.servicecode = node.NodeKey; screenModel.department = node.Department ;"> 0 </button>  {{node.searchfield}}</p>
+            </a> 
+          </div>
+             <br/>
+<div class="control-group">
+ 
+  <div class="controls">  
+    <label class="control-label" >Short Text</label>
+    <input type="text" id="shorttext" placeholder="* Short Description" required ng-model="screenModel.shorttext">
+  </div>
+   
+    <div class="controls">
+         <label class="control-label" >Long Text</label>
+        <textarea id="longtext" rows="6" cols="50" placeholder="* Long Description" required ng-model="screenModel.longtext"></textarea>
+  </div>
+</div>
+ <br/>  
+  <div ng-show="mobi">
+ <p><a class="btn btn-success btn-lg" href="#/where">Back &laquo;</a>
+ <a class="btn btn-warning btn-lg" href="#/where">Create Call &raquo;</a></p>
+  </div> 
+             
+  </div>
+
+
+ 
