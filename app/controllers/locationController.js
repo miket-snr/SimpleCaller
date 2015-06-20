@@ -99,6 +99,162 @@ angular.module('templateApp').controller('ModalInstanceCtrl', function ($scope, 
   $scope.selected = {
     item: $scope.items[0]
   };
+          $scope.collapseAll = function() {
+        $scope.$broadcast('collapseAll');
+      };
+
+      $scope.expandAll = function() {
+        $scope.$broadcast('expandAll');
+      };
+
+      $scope.data = [{
+        "id": 1,
+        "title": "Site 1",
+        "nodes": [
+          {
+            "id": 11,
+            "title": "Building 1",
+            "nodes": [
+              {
+                "id": 111,
+                "title": " Floor  1",
+                "nodes": [{
+                "id": 1111,
+                "title": " Room 1.1",
+                "nodes": []
+              },
+                         {
+                "id": 1112,
+                "title": " Room 1.2",
+                "nodes": []
+              }]
+              },
+                {
+                "id": 112,
+                "title": " Floor  2",
+                "nodes": [{
+                "id": 1121,
+                "title": " Room 2.1",
+                "nodes": []
+              },
+                         {
+                "id": 1122,
+                "title": " Room 2.2",
+                "nodes": []
+              }]
+              },
+                {
+                "id": 113,
+                "title": " Floor  3",
+                "nodes": []
+              }
+            ]
+          },
+            {
+            "id": 12,
+            "title": "Building 2",
+            "nodes": [
+              {
+                "id": 121,
+                "title": " Floor  1",
+                "nodes": [{
+                "id": 1211,
+                "title": " Room 1.1",
+                "nodes": []
+              },
+                         {
+                "id": 1212,
+                "title": " Room 1.2",
+                "nodes": []
+              }]
+              },
+                {
+                "id": 122,
+                "title": " Floor  2",
+                "nodes": [{
+                "id": 1221,
+                "title": " Room 2.1",
+                "nodes": []
+              },
+                         {
+                "id": 1222,
+                "title": " Room 2.2",
+                "nodes": []
+              }]
+              },
+                {
+                "id": 123,
+                "title": " Floor  3",
+                "nodes": []
+              }
+            ]
+          }
+        ]
+      },
+     {
+        "id": 2,
+        "title": "Site 2",
+        "nodes": [
+          {
+            "id": 21,
+            "title": "Building 1",
+            "nodes": [
+              {
+                "id": 211,
+                "title": " Floor  1",
+                "nodes": [{
+                "id": 2111,
+                "title": " Room 1.1",
+                "nodes": []
+              },
+                         {
+                "id": 1112,
+                "title": " Room 1.2",
+                "nodes": []
+              }]
+              },
+                {
+                "id": 2212,
+                "title": " Floor  2",
+                "nodes": [{
+                "id": 2121,
+                "title": " Room 2.1",
+                "nodes": []
+              },
+                         {
+                "id": 2122,
+                "title": " Room 2.2",
+                "nodes": []
+              }]
+              },
+                {
+                "id": 2113,
+                "title": " Floor  3",
+                "nodes": []
+              }
+            ]
+          },
+            {
+            "id": 22,
+            "title": "Parking",
+            "nodes": [
+              {
+                "id": 221,
+                "title": " Level  1",
+                "nodes": []
+              },
+                              {
+                "id": 222,
+                "title": " Level  1",
+                "nodes": []
+              }
+                 
+            ]
+          }
+        ]
+     }
+                     
+   ];
   $scope.doSearch=function(sitecode,sitename){
    dataFactory.dobuildingsearch(sitecode,sitename);   
   }
