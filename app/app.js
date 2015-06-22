@@ -1,6 +1,6 @@
 (function() {
     
-    var app = angular.module('templateApp', ['ngRoute','ui.bootstrap']);
+    var app = angular.module('templateApp', ['treeControl','ngRoute','ui.bootstrap']);
     
     app.config(function($routeProvider) {
         $routeProvider

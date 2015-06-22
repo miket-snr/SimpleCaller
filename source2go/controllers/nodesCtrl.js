@@ -2,7 +2,6 @@
   'use strict';
 
   angular.module('ui.tree')
-
     .controller('TreeNodesController', ['$scope', '$element',
       function ($scope, $element) {
         this.scope = $scope;

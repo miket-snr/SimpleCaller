@@ -1,42 +1,32 @@
  <div class="container">
   <div>
   <h4>Choose a Site:</h4>
- <input type="text" ng-model="screenModel.site" placeholder="Search by Site e.g. *19 or *21*" />
+ <input type="text" ng-model="screenModel.sitecode" placeholder="Search by Site e.g. *19 or *21*" />
  {{ screenModel.sitename }}
        <a ng-click="open()" class="btn btn-warning ">Search...</a>
   </div>
-    <script type="text/ng-template" id="nodes_renderer.html">
-  <div ui-tree-node class="tree-node tree-node-content"  >
-    <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
-        class="glyphicon"
-        ng-class="{
-          'glyphicon-chevron-right': collapsed,
-          'glyphicon-chevron-down': !collapsed
-        }"></span></a>
-      <a> {{node.title }} </a>
-    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
-        class="glyphicon glyphicon-remove"></span></a>
-    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
-        class="glyphicon glyphicon-plus"></span></a>
-  </div>
-  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)"> 
-    </li>
-  </ol>
-</script>
+ 
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3 class="modal-title">Identify the Site!</h3>
-        <input type="text" ng-model="siteCode2" placeholder="Search by Site e.g. *19 or *21*" />
-        <input type="text" ng-model="siteName2" placeholder="Search by Name e.g. *ampus* " />
-        <a ng-click="doSearch(siteCode2,siteName2)" class="btn btn-warning ">Search...</a>
+            <h3 class="modal-title">Identify the Location!</h3>
+            <h4>{{screenfields }}</h4>
+            <input type="text" ng-model="sitefilter" placeholder="Filter by typing" />
         </div>
         <div class="modal-body">
-    <div ui-tree id="tree-root">
+            
+    <treecontrol class="tree-light"
+   tree-model="data"
+   options="treeOptions"
+   on-selection="showSelected(node)"
+   selected-node="node1"
+   filter-expression="sitefilter">
+   {{node.title}} 
+</treecontrol>        
+ <!--   <div ui-tree id="tree-root">
       <ol ui-tree-nodes ng-model="data">
         <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
       </ol>
-    </div>
+    </div>  -->
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="ok()">OK</button>

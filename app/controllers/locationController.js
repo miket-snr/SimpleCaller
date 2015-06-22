@@ -28,6 +28,7 @@
     $scope.searchBox = '' ;
     $scope.characters = 5;
     $scope.nodeData = dataFactory.nodeData ;
+    $scope.localities = dataFactory.getHierarchy() ;
     $scope.floorList = dataFactory.locationData.floorList;
     $scope.siteList = dataFactory.locationData.siteList;
     $scope.screenModel = dataFactory.screenModel ;
@@ -53,7 +54,20 @@
         { $scope.screenModel.locationStatus = false ;};
          dataFactory.screenModel =$scope.screenModel;
      });      
-        
+  $scope.treeOptions = {
+    nodeChildren: "nodes",
+    dirSelectable: true,
+    injectClasses: {
+        ul: "a1",
+        li: "a2",
+        liSelected: "a7",
+        iExpanded: "a3",
+        iCollapsed: "a4",
+        iLeaf: "a5",
+        label: "a6",
+        labelSelected: "a8"
+    }
+}      
   $scope.open = function (size) {
 
     var modalInstance = $modal.open({
@@ -63,7 +77,7 @@
       size: size,
       resolve: {
         items: function () {
-          return $scope.siteList;
+          return $scope.localities;
         },
         screenModel:function () {
           return $scope.screenModel;
@@ -96,6 +110,12 @@
 angular.module('templateApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, screenModel) {
 
   $scope.items = items;
+  $scope.sitefilter="" ;
+    $scope.screenfields = 'None Selected' ;
+  $scope.showSelected = function(node) {
+     screenModel.sitecode = node.key ; 
+     $scope.screenfields = node.key + "-" + node.longkey ;
+  }
   $scope.selected = {
     item: $scope.items[0]
   };
@@ -107,9 +127,10 @@ angular.module('templateApp').controller('ModalInstanceCtrl', function ($scope, 
         $scope.$broadcast('expandAll');
       };
 
-      $scope.data = [{
+      $scope.data = items ;
+      /*[{
         "id": 1,
-        "title": "Site 1",
+        "title": "Site 01",
         "nodes": [
           {
             "id": 11,
@@ -254,12 +275,15 @@ angular.module('templateApp').controller('ModalInstanceCtrl', function ($scope, 
         ]
      }
                      
-   ];
+   ];*/
+          $scope.toggle = function(scope) {
+        scope.toggle();
+      };
   $scope.doSearch=function(sitecode,sitename){
    dataFactory.dobuildingsearch(sitecode,sitename);   
   }
   $scope.ok = function () {
-    screenModel.sitecode = $scope.selected.item.sitecode ;
+    screenModel.sitecode = $scope.screenfields ;
     screenModel.sitename = $scope.selected.item.sitename ;  
     $modalInstance.close($scope.selected.item);
   };
